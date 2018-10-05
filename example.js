@@ -1,3 +1,5 @@
 const FFI = require("ffi")
-const go = new FFI.Library("./golang")
-go.Hi()
+const lib = new FFI.Library("./libgo",{
+    "Hi":[null,[null]]
+})
+lib.Hi()

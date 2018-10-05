@@ -1,18 +1,14 @@
-package com.hongquan.jni;
+import com.sun.jna.Library;
+import com.sun.jna.Native;
 
-public class HelloJNI {
-	
-	// 声明 so 库中的方法
-	public native static String sayHi(String name);
+public class Main {
+    public interface lib extends Library {
+        lib INSTANCE = (lib) Native.loadLibrary("libgo.so", lib.class);
 
-	// 载入 so 动态链接库
-	static {
-		System.load("/home/hongquan/main.so");
-	}
+        void Hi();
+    }
 
-	// java 类入口函数
-	public static void main(String[] args) {
-		System.out.println(sayHi("It's a result return by main.so file!!"));
-	}
-
+    public static void main(String[] args) {
+        lib.INSTANCE.Hi();
+    }
 }
