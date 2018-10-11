@@ -1,3 +1,3 @@
-from ctypes import *  
-lib = cdll.LoadLibrary("./libgo.so")
-lib.Hi()
+from ctypes import *
+go = cdll.LoadLibrary("./libgo.so")
+print go.Hi(333333333)
